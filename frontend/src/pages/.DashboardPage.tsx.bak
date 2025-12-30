@@ -1,0 +1,25 @@
+import { dashboardMock } from "../mocks/dashboard";
+
+export default function DashboardPage() {
+  return (
+    <div className="space-y-4">
+      <h1 className="text-xl font-semibold">Dashboard</h1>
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        <div className="rounded-xl border p-4">
+          <div className="text-sm text-slate-600">Puntos totales</div>
+          <div className="text-2xl font-semibold">{dashboardMock.total_points}</div>
+        </div>
+        <div className="rounded-xl border p-4">
+          <div className="text-sm text-slate-600">Eventos (24h)</div>
+          <div className="text-2xl font-semibold">{dashboardMock.events_last_24h}</div>
+        </div>
+        <div className="rounded-xl border p-4">
+          <div className="text-sm text-slate-600">Regla activa</div>
+          <div className="font-medium">{dashboardMock.active_rule}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+

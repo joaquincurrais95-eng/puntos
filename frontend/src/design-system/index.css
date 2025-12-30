@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* Tailwind v4: habilita dark: con clase .dark (manual), no solo por prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 1) Tokens “de marca” (para poder usar clases tipo bg-brand-500 si querés) */
+@theme {
+  --color-brand-900: #3D268F;
+  --color-brand-700: #7A4099;
+  --color-brand-500: #A96BB5;
+  --color-brand-200: #C5B7D3;
+  --color-brand-100: #CFF0FF;
+}
+
+/* 2) Tokens semánticos del sistema (lo que usa la UI) */
+/* Default: un look “neutral pro” con acento violeta */
+:root {
+  color-scheme: light;
+
+  /* Base UI (igual al diseño de referencia) */
+  --app-bg: #f6f7fb;              /* fondo gris claro */
+  --app-surface: #ffffff;         /* cards */
+  --app-surface-2: #f3f4f6;       /* hover / superficies suaves */
+
+  --app-text: #111827;            /* texto principal */
+  --app-muted: #6b7280;           /* texto secundario */
+
+  --app-border: #e5e7eb;          /* bordes suaves */
+  --app-shadow: rgba(17, 24, 39, 0.08);
+
+  /* Acentos */
+  --app-primary: #6d5df6;         /* violeta */
+  --app-primary-hover: #5b4fe6;
+  --app-ring: rgba(109, 93, 246, 0.30);
+
+  --app-success: #22c55e;         /* verde */
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --app-bg: #f6f7fb;
+  --app-surface: #ffffff;
+  --app-surface-2: #f3f4f6;
+
+  --app-text: #111827;
+  --app-muted: #6b7280;
+
+  --app-border: #e5e7eb;
+  --app-shadow: rgba(17, 24, 39, 0.08);
+
+  --app-primary: #6d5df6;
+  --app-primary-hover: #5b4fe6;
+  --app-ring: rgba(109, 93, 246, 0.30);
+
+  --app-success: #22c55e;
+}
+
+
+/* 3) Tema “Brand Dark” (usa tu fondo fuerte como base) */
+/*:root[data-theme="brand"] {
+  color-scheme: dark;
+
+  --app-bg: #3D268F;
+  --app-surface: rgba(122, 64, 153, 0.35);
+  --app-surface-2: rgba(122, 64, 153, 0.50);
+  --app-text: #C5B7D3;
+  --app-text-muted: rgba(197, 183, 211, 0.78);
+  --app-border: rgba(207, 240, 255, 0.35);
+  --app-shadow: rgba(169, 107, 181, 0.35);
+
+  --app-primary: #7A4099;
+  --app-primary-hover: #8b4baa;
+  --app-ring: rgba(207, 240, 255, 0.45);
+}*/
+
+/* 4) Base global */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--app-bg);
+  color: var(--app-text);
+}
+
+/* 5) Utilidades semánticas (no dependés de tailwind.config) */
+@layer utilities {
+  .app-bg { background: var(--app-bg); }
+  .app-surface { background: var(--app-surface); }
+  .app-surface-2 { background: var(--app-surface-2); }
+
+  .app-text { color: var(--app-text); }
+  .app-muted { color: var(--app-text-muted); }
+
+  .app-border { border-color: var(--app-border); }
+  .app-ring { outline: 2px solid var(--app-ring); outline-offset: 2px; }
+
+  .app-shadow {
+    box-shadow: 0 10px 30px 0 var(--app-shadow);
+  }
+}
+
+

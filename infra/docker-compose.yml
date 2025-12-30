@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: mvp
+      POSTGRES_USER: mvp
+      POSTGRES_PASSWORD: mvp
+    ports:
+      - "6565:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+
