@@ -1,7 +1,6 @@
 up:
-	docker compose -f infra/docker-compose.yml up -d
-build:
-	docker compose -f infra/docker-compose.yml up --build
+	docker compose up --build -d
 down:
-	docker compose -f infra/docker-compose.yml down 
-
+	docker compose down
+logs:
+	docker compose logs -f backend

@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-puntos}
+      POSTGRES_USER: ${POSTGRES_USER:-puntos}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-demo-only}
+    ports:
+      - "127.0.0.1:6565:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-puntos}:${POSTGRES_PASSWORD:-local-demo-only}@db:5432/${POSTGRES_DB:-puntos}
+      TENANT_API_KEY: ${TENANT_API_KEY:-local-demo-key}
+      TIENDANUBE_APP_SECRET: ${TIENDANUBE_APP_SECRET:-local-demo-webhook-secret}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8000:8000"
+volumes:
+  pgdata:

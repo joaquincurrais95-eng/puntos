@@ -5,7 +5,6 @@ from deps.deps import get_db
 from models.models import Event
 from schemas.schemas import EventOut
 from auth.auth import require_api_key
-from routes.admin_rules import get_current_rule_for_tenant
 
 router = APIRouter(prefix="/v1/admin", tags=["admin"])
 
