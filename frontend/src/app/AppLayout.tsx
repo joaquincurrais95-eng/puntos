@@ -74,6 +74,7 @@ export default function AppLayout() {
           {/* Content */}
           <main className="p-6">
             <div className="mx-auto max-w-6xl">
+              <p role="note" className="mb-4 rounded-xl border p-3 text-sm">Prototipo local: solo Eventos puede usar datos de la API. Dashboard, reglas e integración muestran datos de demostración; no se calculan puntos.</p>
               <Outlet />
             </div>
           </main>

@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.mvp-puntos/
+.pytest_cache/
+*.db
+*.bak
+node_modules/
+dist/

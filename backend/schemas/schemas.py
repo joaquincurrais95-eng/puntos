@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 
 class TransactionEventIn(BaseModel):
@@ -18,5 +18,4 @@ class EventOut(BaseModel):
     timestamp: datetime
     created_at: datetime | None = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

@@ -1,3 +1,1 @@
-const source = (import.meta.env.VITE_DATA_SOURCE);
-export const DATA_SOURCE = source;
-
+export const DATA_SOURCE = import.meta.env.VITE_DATA_SOURCE ?? "mock";

@@ -36,7 +36,7 @@ function formatDate(value?: string) {
 export async function getEvents(): Promise<EventRowDTO[]> {
   if (DATA_SOURCE === "mock") return eventsMock;
 
-  const rows = (await apiGet("/v1/events?limit=50&offset=0")) as EventsApiRow[];
+  const rows = (await apiGet("/v1/admin/events?limit=50&offset=0")) as EventsApiRow[];
 
   return rows.map((r) => ({
     id: r.id,
